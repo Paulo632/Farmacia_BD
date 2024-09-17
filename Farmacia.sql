@@ -17,19 +17,19 @@ idade int
 create table Funcionario(
 id_funcionario int primary key not null, /*Chave primária*/
 nome_funcionario varchar(80),
-endereço varchar(60),
+endereco varchar(60),
 email varchar(40),
 telefone varchar(16),
 cargo varchar(40),
 salario float,
-data_contratação date
+data_contratacao date
 );
 
 /*Criação da tabela Fornecedor, que armazena os dados dos fornecedores, para que haja um controle de onde é conseguido os medicamentos.*/
 create table Fornecedor(
 id_fornecedor int primary key not null, /*Chave primária*/
 nome_fornecedor varchar(80),
-endereço varchar(60),
+endereco varchar(60),
 telefone varchar(16),
 email varchar(40),
 CNPJ varchar(20)
@@ -61,7 +61,7 @@ Foreign key (id_funcionario) references Funcionario(id_funcionario)
 
 /*Criação da tabela Item_Venda, que armazena os dados dos itens vendidos.*/
 create table Item_Venda(
-id_item int primary key not null,
+id_item int primary key not null, /*Chave primaria*/
 quantidade int,
 preço_unitario float,
 subtotal float,
@@ -73,20 +73,44 @@ foreign key (id_produto) references Produto(id_produto)
 
 /*Procedures*/
 
+-- 1
 delimiter /
 /*Essa procedure executa uma consulta da tabela cliente e faz uso do switch para selecionar o que mostrar na tela*/
+-- all, nome, cpf, endereço, idade
   create procedure consulta_cliente(in fun char(20),in id int)
   begin
   case fun
     when fun == "all" then select * from Cliente where id_cliente = id;
     when fun == "nome" then select nome_cliente from Cliente where id_cliente = id;
     when fun == "cpf" then select CPF from Cliente where id_cliente = id;
-    when fun == "endereço" then select endereço from Cliente where id_cliente = id;
+    when fun == "endereço" then select endereco from Cliente where id_cliente = id;
     when fun == "idade" then select idade from Cliente where id_cliente = id;
     else "Essa operação não é possível.";
   end case;
   end/
   
 delimiter ;
+
+delimiter /
+/*Procedure que executa a consulta da tabela Funcionario e faz uso do switch para selecionar o que mostrar na tela*/
+-- all, nome, endereço, cargo, salario, contrataçao
+  create procedure consulta_funcionario(in fun char(20),in id int)
+  begin
+  case fun
+    when fun == "all" then select * from Funcionario where id_funcionario = id;
+    when fun == "nome" then select nome_funcionario from Funcionario where id_funcionario = id;
+    when fun == "endereço" then select endereco from Funcionario where id_funcionario = id;
+    when fun == "email" then select email from Funcionario where id_funcionario = id;
+    when fun == "telefone" then select telefone from Funcionario where id_funcionario = id;
+    when fun == "cargo" then select cargo from Funcionario where id_funcionario = id;
+    when fun == "salario" then select salario from Funcionario where id_funcionario = id;
+    when fun == "contrataçao" then select data_contratacao from Funcionario where id_funcionario = id;
+    else "Essa operação não é possível.";
+  end case;
+  end/
+
+delimiter ;
+
+
 
 
