@@ -71,6 +71,86 @@ create table Item_Venda(
   foreign key (id_produto) references Produto(id_produto)
 );
 
+/* Dados */
+
+-- Clientes
+insert into Cliente (id_cliente, nome_cliente, CPF, endereco, idade) values
+(1, 'Ana Silva', '123.456.789-00', 'Rua A, 123', 30),
+(2, 'Bruno Souza', '234.567.890-12', 'Rua B, 234', 25),
+(3, 'Carlos Oliveira', '345.678.901-23', 'Rua C, 345', 40),
+(4, 'Diana Costa', '456.789.012-34', 'Rua D, 456', 35),
+(5, 'Eduardo Lima', '567.890.123-45', 'Rua E, 567', 50),
+(6, 'Fernanda Pereira', '678.901.234-56', 'Rua F, 678', 28),
+(7, 'Gabriel Santos', '789.012.345-67', 'Rua G, 789', 33),
+(8, 'Heloísa Martins', '890.123.456-78', 'Rua H, 890', 45),
+(9, 'Igor Almeida', '901.234.567-89', 'Rua I, 901', 29),
+(10, 'Juliana Rocha', '012.345.678-90', 'Rua J, 012', 38);
+
+-- Funcionários
+insert into Funcionario (id_funcionario, nome_funcionario, endereco, email, telefone, cargo, salario, data_contratacao) values
+(1, 'Lucas Martins', 'Avenida 1, 100', 'lucas.martins@empresa.com', '(11) 1111-1111', 'Farmacêutico', 3000.00, '2023-01-15'),
+(2, 'Mariana Silva', 'Avenida 2, 200', 'mariana.silva@empresa.com', '(11) 2222-2222', 'Gerente', 5000.00, '2022-08-20'),
+(3, 'João Pereira', 'Avenida 3, 300', 'joao.pereira@empresa.com', '(11) 3333-3333', 'Caixa', 2500.00, '2024-02-10'),
+(4, 'Tatiane Costa', 'Avenida 4, 400', 'tatiane.costa@empresa.com', '(11) 4444-4444', 'Assistente', 2800.00, '2023-07-01'),
+(5, 'Roberto Lima', 'Avenida 5, 500', 'roberto.lima@empresa.com', '(11) 5555-5555', 'Farmacêutico', 3200.00, '2021-06-18'),
+(6, 'Amanda Silva', 'Avenida 6, 600', 'amanda.silva@empresa.com', '(11) 6666-6666', 'Auxiliar', 2200.00, '2022-11-23'),
+(7, 'Pedro Souza', 'Avenida 7, 700', 'pedro.souza@empresa.com', '(11) 7777-7777', 'Farmacêutico', 3100.00, '2023-03-05'),
+(8, 'Juliana Santos', 'Avenida 8, 800', 'juliana.santos@empresa.com', '(11) 8888-8888', 'Gerente', 5500.00, '2022-10-10'),
+(9, 'Carlos Lima', 'Avenida 9, 900', 'carlos.lima@empresa.com', '(11) 9999-9999', 'Caixa', 2600.00, '2023-09-15'),
+(10, 'Eliane Martins', 'Avenida 10, 1000', 'eliane.martins@empresa.com', '(11) 1010-1010', 'Assistente', 2900.00, '2024-04-01');
+
+-- Fornecedor
+insert into Fornecedor (id_fornecedor, nome_fornecedor, endereco, telefone, email, CNPJ) values
+(1, 'Farmacia ABC', 'Rua X, 123', '(11) 1111-0000', 'contato@farmaciaabc.com.br', '12.345.678/0001-91'),
+(2, 'Laboratório Z', 'Rua Y, 456', '(11) 2222-0000', 'atendimento@laboratorioz.com.br', '23.456.789/0001-92'),
+(3, 'Distribuidora XYZ', 'Rua Z, 789', '(11) 3333-0000', 'vendas@distribuidoraxyz.com.br', '34.567.890/0001-93'),
+(4, 'Medicamentos São Paulo', 'Rua W, 101', '(11) 4444-0000', 'suporte@medsp.com.br', '45.678.901/0001-94'),
+(5, 'Farmacia Moderna', 'Rua V, 202', '(11) 5555-0000', 'contato@farmaciamoderna.com.br', '56.789.012/0001-95'),
+(6, 'Laboratório Saúde', 'Rua U, 303', '(11) 6666-0000', 'info@laboratoriosaude.com.br', '67.890.123/0001-96'),
+(7, 'Distribuidora Farmácia', 'Rua T, 404', '(11) 7777-0000', 'comercial@distribuidorafarmacia.com.br', '78.901.234/0001-97'),
+(8, 'Medicamentos Brasil', 'Rua S, 505', '(11) 8888-0000', 'contato@medbrasil.com.br', '89.012.345/0001-98'),
+(9, 'Farmacia Premium', 'Rua R, 606', '(11) 9999-0000', 'atendimento@farmaciapremium.com.br', '90.123.456/0001-99'),
+(10, 'Laboratório Total', 'Rua Q, 707', '(11) 1010-0000', 'suporte@laboratoriototal.com.br', '01.234.567/0001-00');
+
+-- Produto
+insert into Produto (id_produto, nome_produto, descricao, preco, qtd_estoque, data_validade, categoria, id_fornecedor) values
+(1, 'Paracetamol 500mg', 'Medicamento para dor e febre', 15.00, 100, 2025, 'Analgésico', 1),
+(2, 'Ibuprofeno 200mg', 'Anti-inflamatório', 20.00, 80, 2024, 'Anti-inflamatório', 2),
+(3, 'Amoxicilina 500mg', 'Antibiótico', 30.00, 50, 2026, 'Antibiótico', 3),
+(4, 'Dipirona 1g', 'Medicamento para dor e febre', 18.00, 70, 2025, 'Analgésico', 4),
+(5, 'Losartana 50mg', 'Anti-hipertensivo', 25.00, 60, 2026, 'Anti-hipertensivo', 5),
+(6, 'Omeprazol 20mg', 'Medicamento para azia', 22.00, 90, 2024, 'Antiácido', 6),
+(7, 'Cetirizina 10mg', 'Antialérgico', 17.00, 75, 2025, 'Antialérgico', 7),
+(8, 'Azitromicina 500mg', 'Antibiótico', 35.00, 40, 2026, 'Antibiótico', 8),
+(9, 'Metformina 850mg', 'Antidiabético', 28.00, 85, 2026, 'Antidiabético', 9),
+(10, 'Loratadina 10mg', 'Antialérgico', 19.00, 65, 2025, 'Antialérgico', 10);
+
+-- Venda
+insert into Venda (id_venda, data_venda, valor_total, id_cliente, id_funcionario) values
+(1, '2024-09-01 10:00:00', 45.00, 1, 1),
+(2, '2024-09-02 11:30:00', 60.00, 2, 2),
+(3, '2024-09-03 14:00:00', 90.00, 3, 3),
+(4, '2024-09-04 09:15:00', 35.00, 4, 4),
+(5, '2024-09-05 16:45:00', 50.00, 5, 5),
+(6, '2024-09-06 12:00:00', 80.00, 6, 6),
+(7, '2024-09-07 15:30:00', 55.00, 7, 7),
+(8, '2024-09-08 17:00:00', 70.00, 8, 8),
+(9, '2024-09-09 10:30:00', 45.00, 9, 9),
+(10, '2024-09-10 11:00:00', 85.00, 10, 10);
+
+-- Item_Venda
+insert into Item_Venda (id_item, quantidade, preco_unitario, subtotal, id_venda, id_produto) values
+(1, 2, 15.00, 30.00, 1, 1),
+(2, 3, 20.00, 60.00, 2, 2),
+(3, 1, 30.00, 30.00, 3, 3),
+(4, 1, 18.00, 18.00, 4, 4),
+(5, 2, 25.00, 50.00, 5, 5),
+(6, 4, 22.00, 88.00, 6, 6),
+(7, 3, 17.00, 51.00, 7, 7),
+(8, 2, 35.00, 70.00, 8, 8),
+(9, 3, 28.00, 84.00, 9, 9),
+(10, 1, 19.00, 19.00, 10, 10);
+
 /* Procedures */
 
 /* Procedure 1 */
