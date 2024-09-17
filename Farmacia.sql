@@ -91,6 +91,7 @@ delimiter /
   
 delimiter ;
 
+-- 2
 delimiter /
 /*Procedure que executa a consulta da tabela Funcionario e faz uso do switch para selecionar o que mostrar na tela*/
 -- all, nome, endereço, cargo, salario, contrataçao
@@ -110,6 +111,8 @@ delimiter /
   end/
 
 delimiter ;
+
+
 
 
 
