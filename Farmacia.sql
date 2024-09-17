@@ -1,28 +1,33 @@
+/*Cria o banco de dados*/
 create database SGBD_Farmácia;
 
+/*Seleciona o Banco de Dados*/
 use SGBD_Farmácia;
 
+/*Criação da tabela Cliente*/
 create table Cliente(
-id_cliente int primary key not null,
+id_cliente int primary key not null, /*Chave primária*/
 nome_cliente varchar(80),
 CPF varchar(14),
 endereço varchar(60),
 idade int
 );
 
+/*Criação de uma tabela Funcionario*/
 create table Funcionario(
-id_funcionario int primary key not null,
+id_funcionario int primary key not null, /*Chave primária*/
 nome_funcionario varchar(80),
 endereço varchar(60),
 email varchar(40),
 telefone varchar(16),
 cargo varchar(40),
 salario float,
-data_contratação datetime
+data_contratação date
 );
 
+/*Criação da tabela Fornecedor, que armazena os dados dos fornecedores, para que haja um controle de onde é conseguido os medicamentos.*/
 create table Fornecedor(
-id_fornecedor int primary key not null,
+id_fornecedor int primary key not null, /*Chave primária*/
 nome_fornecedor varchar(80),
 endereço varchar(60),
 telefone varchar(16),
@@ -30,8 +35,9 @@ email varchar(40),
 CNPJ varchar(20)
 );
 
+/*Criação da tabela Produto, que tem a função de controlar os estoque, guardando a quantidade e mais algumas informações dos produtos.*/
 create table Produto(
-id_produto int primary key not null,
+id_produto int primary key not null, /*Chave primária*/
 nome_produto varchar(80),
 descricao varchar(500),
 preco float,
@@ -42,8 +48,9 @@ id_fornecedor int,
 foreign key (id_fornecedor) references Fornecedor(id_fornecedor)
 );
 
+/*Criação da tabela Venda, que armazena os dados das vendas realizadas.*/
 create table Venda(
-id_venda int primary key not null,
+id_venda int primary key not null, /*Chave primária*/
 data_venda datetime,
 valor_total float,
 id_cliente int,
@@ -52,6 +59,7 @@ id_funcionario int,
 Foreign key (id_funcionario) references Funcionario(id_funcionario)
 );
 
+/*Criação da tabela Item_Venda, que armazena os dados dos itens vendidos.*/
 create table Item_Venda(
 id_item int primary key not null,
 quantidade int,
@@ -62,3 +70,23 @@ foreign key (id_venda) references Venda(id_venda),
 id_produto int,
 foreign key (id_produto) references Produto(id_produto)
 );
+
+/*Procedures*/
+
+delimiter /
+/*Essa procedure executa uma consulta da tabela cliente e faz uso do switch para selecionar o que mostrar na tela*/
+  create procedure consulta_cliente(in fun char(20),in id int)
+  begin
+  case fun
+    when fun == "all" then select * from Cliente where id_cliente = id;
+    when fun == "nome" then select nome_cliente from Cliente where id_cliente = id;
+    when fun == "cpf" then select CPF from Cliente where id_cliente = id;
+    when fun == "endereço" then select endereço from Cliente where id_cliente = id;
+    when fun == "idade" then select idade from Cliente where id_cliente = id;
+    else "Essa operação não é possível.";
+  end case;
+  end/
+  
+delimiter ;
+
+
