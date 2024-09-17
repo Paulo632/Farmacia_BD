@@ -190,6 +190,46 @@ begin
 end/
 delimiter ;
 
+/* Procedure 8 */
+delimiter /
+create procedure deletar_funcionario(in p_id_funcionario int)
+begin
+    delete from Funcionario where id_funcionario = p_id_funcionario;
+end/
+delimiter ;
+
+/* Procedure 9 */
+delimiter /
+create procedure registrar_venda(
+    in p_data_venda datetime,
+    in p_valor_total float,
+    in p_id_cliente int,
+    in p_id_funcionario int
+)
+begin
+    insert into Venda (data_venda, valor_total, id_cliente, id_funcionario)
+    values (p_data_venda, p_valor_total, p_id_cliente, p_id_funcionario);
+end/
+delimiter ;
+
+/* Procedure 10 */
+delimiter /
+create procedure adicionar_item_venda(
+    in p_quantidade int,
+    in p_preco_unitario float,
+    in p_subtotal float,
+    in p_id_venda int,
+    in p_id_produto int
+)
+begin
+    insert into Item_Venda (quantidade, preco_unitario, subtotal, id_venda, id_produto)
+    values (p_quantidade, p_preco_unitario, p_subtotal, p_id_venda, p_id_produto);
+end/
+delimiter ;
+
+
+
+
 
 
 
