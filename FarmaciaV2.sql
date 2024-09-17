@@ -227,6 +227,49 @@ begin
 end/
 delimiter ;
 
+/* Procedure 11 */
+delimiter /
+create procedure verificar_estoque(in p_id_produto int)
+begin
+    select nome_produto, qtd_estoque
+    from Produto
+    where id_produto = p_id_produto;
+end/
+delimiter ;
+
+/* Procedure 12 */
+delimiter /
+create procedure atualizar_estoque(
+    in p_id_produto int,
+    in p_qtd_estoque int
+)
+begin
+    update Produto
+    set qtd_estoque = p_qtd_estoque
+    where id_produto = p_id_produto;
+end/
+delimiter ;
+
+/* Procedure 13 */
+delimiter /
+create procedure listar_vendas_por_cliente(in p_id_cliente int)
+begin
+    select * from Venda
+    where id_cliente = p_id_cliente;
+end/
+delimiter ;
+
+/* Procedure 14 */
+delimiter /
+create procedure listar_produtos_por_fornecedor(in p_id_fornecedor int)
+begin
+    select * from Produto
+    where id_fornecedor = p_id_fornecedor;
+end/
+delimiter ;
+
+
+
 
 
 
