@@ -1,8 +1,8 @@
 /* Cria o banco de dados */
-create database SGBD_Farmacia;
+create database FarmaciaV2;
 
 /* Seleciona o Banco de Dados */
-use SGBD_Farmacia;
+use FarmaciaV2;
 
 /* Criação da tabela Cliente */
 create table Cliente(
@@ -174,6 +174,8 @@ begin
 end/
 delimiter ;
 
+-- call consulta_cliente('nome', 1);
+
 /* Procedure 2 */
 /* Procedure que faz uma consulta da tabela Funcionario. */
 delimiter /
@@ -201,6 +203,8 @@ begin
 end/
 delimiter ;
 
+-- call consulta_funcionario('all', 3);
+
 /* Procedure 3 */
 /* Procedure que faz uma consulta da tabela Fornecedor. */
 delimiter /
@@ -223,6 +227,8 @@ begin
   end if;
 end/
 delimiter ;
+
+-- call consulta_fornecedor('all', 7);
 
 /* Procedure 4 */
 /* Procedure que faz uma consulta da tabela Produto. */
@@ -298,15 +304,15 @@ delimiter ;
 /* Procedure 7 */
 /* Procedure que adiciona um cliente a tabela. */
 delimiter /
-create procedure adicionar_cliente(
+create procedure adicionar_cliente(in p_id int,
     in p_nome_cliente varchar(80),
     in p_CPF varchar(14),
     in p_endereco varchar(60),
     in p_idade int
 )
 begin
-    insert into Cliente (nome_cliente, CPF, endereco, idade)
-    values (p_nome_cliente, p_CPF, p_endereco, p_idade);
+    insert into Cliente (id_cliente, nome_cliente, CPF, endereco, idade)
+    values (p_id, p_nome_cliente, p_CPF, p_endereco, p_idade);
 end/
 delimiter ;
 
@@ -342,7 +348,7 @@ delimiter ;
 /* Procedure 10 */
 /* Procedure que adiciona um funcionário a tabela. */
 delimiter /
-create procedure adicionar_funcionario(
+create procedure adicionar_funcionario(in p_id int,
     in p_nome_funcionario varchar(80),
     in p_endereco varchar(60),
     in p_email varchar(40),
@@ -352,8 +358,8 @@ create procedure adicionar_funcionario(
     in p_data_contratacao date
 )
 begin
-    insert into Funcionario (nome_funcionario, endereco, email, telefone, cargo, salario, data_contratacao)
-    values (p_nome_funcionario, p_endereco, p_email, p_telefone, p_cargo, p_salario, p_data_contratacao);
+    insert into Funcionario (id_funcionario, nome_funcionario, endereco, email, telefone, cargo, salario, data_contratacao)
+    values (p_id, p_nome_funcionario, p_endereco, p_email, p_telefone, p_cargo, p_salario, p_data_contratacao);
 end/
 delimiter ;
 
@@ -395,15 +401,15 @@ delimiter ;
 /* Procedure 13 */
 /* Procedure que registra uma venda. */
 delimiter /
-create procedure registrar_venda(
+create procedure registrar_venda(in p_id int,
     in p_data_venda datetime,
     in p_valor_total float,
     in p_id_cliente int,
     in p_id_funcionario int
 )
 begin
-    insert into Venda (data_venda, valor_total, id_cliente, id_funcionario)
-    values (p_data_venda, p_valor_total, p_id_cliente, p_id_funcionario);
+    insert into Venda (id_venda, data_venda, valor_total, id_cliente, id_funcionario)
+    values (p_id, p_data_venda, p_valor_total, p_id_cliente, p_id_funcionario);
 end/
 delimiter ;
 
@@ -505,8 +511,6 @@ call soma_salarios(@v_soma_salario);
 
 select @v_soma_salario as soma_total_salarios;
 */
-
-
 
 
 
