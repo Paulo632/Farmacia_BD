@@ -158,14 +158,19 @@ insert into Item_Venda (id_item, quantidade, preco_unitario, subtotal, id_venda,
 delimiter /
 create procedure consulta_cliente(in fun varchar(20), in id int)
 begin
-  case 
-    when fun = 'all' then select * from Cliente where id_cliente = id;
-    when fun = 'nome' then select nome_cliente from Cliente where id_cliente = id;
-    when fun = 'cpf' then select CPF from Cliente where id_cliente = id;
-    when fun = 'endereco' then select endereco from Cliente where id_cliente = id;
-    when fun = 'idade' then select idade from Cliente where id_cliente = id;
-    else select 'Essa operação não é possível.' as mensagem;
-  end case;
+  if fun = 'all' then
+    select * from Cliente where id_cliente = id;
+  elseif fun = 'nome' then
+    select nome_cliente from Cliente where id_cliente = id;
+  elseif fun = 'cpf' then
+    select CPF from Cliente where id_cliente = id;
+  elseif fun = 'endereco' then
+    select endereco from Cliente where id_cliente = id;
+  elseif fun = 'idade' then
+    select idade from Cliente where id_cliente = id;
+  else
+    select 'Essa operação não é possível.' as mensagem;
+  end if;
 end/
 delimiter ;
 
@@ -174,17 +179,25 @@ delimiter ;
 delimiter /
 create procedure consulta_funcionario(in fun varchar(20), in id int)
 begin
-  case 
-    when fun = 'all' then select * from Funcionario where id_funcionario = id;
-    when fun = 'nome' then select nome_funcionario from Funcionario where id_funcionario = id;
-    when fun = 'endereco' then select endereco from Funcionario where id_funcionario = id;
-    when fun = 'email' then select email from Funcionario where id_funcionario = id;
-    when fun = 'telefone' then select telefone from Funcionario where id_funcionario = id;
-    when fun = 'cargo' then select cargo from Funcionario where id_funcionario = id;
-    when fun = 'salario' then select salario from Funcionario where id_funcionario = id;
-    when fun = 'contratacao' then select data_contratacao from Funcionario where id_funcionario = id;
-    else select 'Essa operação não é possível.' as mensagem;
-  end case;
+  if fun = 'all' then
+    select * from Funcionario where id_funcionario = id;
+  elseif fun = 'nome' then
+    select nome_funcionario from Funcionario where id_funcionario = id;
+  elseif fun = 'endereco' then
+    select endereco from Funcionario where id_funcionario = id;
+  elseif fun = 'email' then
+    select email from Funcionario where id_funcionario = id;
+  elseif fun = 'telefone' then
+    select telefone from Funcionario where id_funcionario = id;
+  elseif fun = 'cargo' then
+    select cargo from Funcionario where id_funcionario = id;
+  elseif fun = 'salario' then
+    select salario from Funcionario where id_funcionario = id;
+  elseif fun = 'contratacao' then
+    select data_contratacao from Funcionario where id_funcionario = id;
+  else
+    select 'Essa operação não é possível.' as mensagem;
+  end if;
 end/
 delimiter ;
 
@@ -193,15 +206,21 @@ delimiter ;
 delimiter /
 create procedure consulta_fornecedor(in fun varchar(20), in id int)
 begin
-  case 
-    when fun = 'all' then select * from Fornecedor where id_fornecedor = id;
-    when fun = 'nome' then select nome_fornecedor from Fornecedor where id_fornecedor = id;
-    when fun = 'endereco' then select endereco from Fornecedor where id_fornecedor = id;
-    when fun = 'telefone' then select telefone from Fornecedor where id_fornecedor = id;
-    when fun = 'email' then select email from Fornecedor where id_fornecedor = id;
-    when fun = 'CNPJ' then select CNPJ from Fornecedor where id_fornecedor = id;
-    else select 'Essa operação não é possível.' as mensagem;
-  end case;
+  if fun = 'all' then
+    select * from Fornecedor where id_fornecedor = id;
+  elseif fun = 'nome' then
+    select nome_fornecedor from Fornecedor where id_fornecedor = id;
+  elseif fun = 'endereco' then
+    select endereco from Fornecedor where id_fornecedor = id;
+  elseif fun = 'telefone' then
+    select telefone from Fornecedor where id_fornecedor = id;
+  elseif fun = 'email' then
+    select email from Fornecedor where id_fornecedor = id;
+  elseif fun = 'CNPJ' then
+    select CNPJ from Fornecedor where id_fornecedor = id;
+  else
+    select 'Essa operação não é possível.' as mensagem;
+  end if;
 end/
 delimiter ;
 
@@ -210,17 +229,25 @@ delimiter ;
 delimiter /
 create procedure consulta_produto(in fun varchar(20), in id int)
 begin
-  case 
-    when fun = 'all' then select * from Produto where id_produto = id;
-    when fun = 'nome' then select nome_produto from Produto where id_produto = id;
-    when fun = 'descricao' then select descricao from Produto where id_produto = id;
-    when fun = 'preco' then select preco from Produto where id_produto = id;
-    when fun = 'qtd_estoque' then select qtd_estoque from Produto where id_produto = id;
-    when fun = 'data_validade' then select data_validade from Produto where id_produto = id;
-    when fun = 'categoria' then select categoria from Produto where id_produto = id;
-    when fun = 'id_fornecedor' then select id_fornecedor from Produto where id_produto = id;
-    else select 'Essa operação não é possível.' as mensagem;
-  end case;
+  if fun = 'all' then
+    select * from Produto where id_produto = id;
+  elseif fun = 'nome' then
+    select nome_produto from Produto where id_produto = id;
+  elseif fun = 'descricao' then
+    select descricao from Produto where id_produto = id;
+  elseif fun = 'preco' then
+    select preco from Produto where id_produto = id;
+  elseif fun = 'qtd_estoque' then
+    select qtd_estoque from Produto where id_produto = id;
+  elseif fun = 'data_validade' then
+    select data_validade from Produto where id_produto = id;
+  elseif fun = 'categoria' then
+    select categoria from Produto where id_produto = id;
+  elseif fun = 'id_fornecedor' then
+    select id_fornecedor from Produto where id_produto = id;
+  else
+    select 'Essa operação não é possível.' as mensagem;
+  end if;
 end/
 delimiter ;
 
@@ -229,18 +256,46 @@ delimiter ;
 delimiter /
 create procedure consulta_venda(in fun varchar(20), in id int)
 begin
-  case 
-    when fun = 'all' then select * from Venda where id_venda = id;
-    when fun = 'data_venda' then select data_venda from Venda where id_venda = id;
-    when fun = 'valor_total' then select valor_total from Venda where id_venda = id;
-    when fun = 'id_cliente' then select id_cliente from Venda where id_venda = id;
-    when fun = 'id_funcionario' then select id_funcionario from Venda where id_venda = id;
-    else select 'Essa operação não é possível.' as mensagem;
-  end case;
+  if fun = 'all' then
+    select * from Venda where id_venda = id;
+  elseif fun = 'data_venda' then
+    select data_venda from Venda where id_venda = id;
+  elseif fun = 'valor_total' then
+    select valor_total from Venda where id_venda = id;
+  elseif fun = 'id_cliente' then
+    select id_cliente from Venda where id_venda = id;
+  elseif fun = 'id_funcionario' then
+    select id_funcionario from Venda where id_venda = id;
+  else
+    select 'Essa operação não é possível.' as mensagem;
+  end if;
 end/
 delimiter ;
 
 /* Procedure 6 */
+/* Procedure que faz uma consulta da tabela Item_Venda. */
+delimiter /
+create procedure consulta_item_venda(in fun varchar(20), in id int)
+begin
+  if fun = 'all' then
+    select * from Item_Venda where id_item = id;
+  elseif fun = 'quantidade' then
+    select quantidade from Item_Venda where id_item = id;
+  elseif fun = 'preco_unitario' then
+    select preco_unitario from Item_Venda where id_item = id;
+  elseif fun = 'subtotal' then
+    select subtotal from Item_Venda where id_item = id;
+  elseif fun = 'id_venda' then
+    select id_venda from Item_Venda where id_item = id;
+  elseif fun = 'id_produto' then
+    select id_produto from Item_Venda where id_item = id;
+  else
+    select 'Essa operação não é possível.' as mensagem;
+  end if;
+end/
+delimiter ;
+
+/* Procedure 7 */
 delimiter /
 create procedure adicionar_cliente(
     in p_nome_cliente varchar(80),
@@ -254,8 +309,7 @@ begin
 end/
 delimiter ;
 
-/* Procedure 7 */
-
+/* Procedure 8 */
 delimiter /
 create procedure atualizar_cliente(
     in p_id_cliente int,
@@ -274,7 +328,7 @@ begin
 end/
 delimiter ;
 
-/* Procedure 8 */
+/* Procedure 9 */
 delimiter /
 create procedure deletar_cliente(in p_id_cliente int)
 begin
@@ -282,7 +336,7 @@ begin
 end/
 delimiter ;
 
-/* Procedure 9 */
+/* Procedure 10 */
 delimiter /
 create procedure adicionar_funcionario(
     in p_nome_funcionario varchar(80),
@@ -299,7 +353,7 @@ begin
 end/
 delimiter ;
 
-/* Procedure 10 */
+/* Procedure 11 */
 delimiter /
 create procedure atualizar_funcionario(
     in p_id_funcionario int,
@@ -324,7 +378,7 @@ begin
 end/
 delimiter ;
 
-/* Procedure 11 */
+/* Procedure 12 */
 delimiter /
 create procedure deletar_funcionario(in p_id_funcionario int)
 begin
@@ -332,7 +386,7 @@ begin
 end/
 delimiter ;
 
-/* Procedure 12 */
+/* Procedure 13 */
 delimiter /
 create procedure registrar_venda(
     in p_data_venda datetime,
@@ -346,7 +400,7 @@ begin
 end/
 delimiter ;
 
-/* Procedure 13 */
+/* Procedure 14 */
 delimiter /
 create procedure adicionar_item_venda(
     in p_quantidade int,
@@ -361,7 +415,7 @@ begin
 end/
 delimiter ;
 
-/* Procedure 14 */
+/* Procedure 15 */
 delimiter /
 create procedure verificar_estoque(in p_id_produto int)
 begin
@@ -371,7 +425,7 @@ begin
 end/
 delimiter ;
 
-/* Procedure 15 */
+/* Procedure 16 */
 delimiter /
 create procedure atualizar_estoque(
     in p_id_produto int,
@@ -384,7 +438,7 @@ begin
 end/
 delimiter ;
 
-/* Procedure 16 */
+/* Procedure 17 */
 delimiter /
 create procedure listar_vendas_por_cliente(in p_id_cliente int)
 begin
@@ -393,7 +447,7 @@ begin
 end/
 delimiter ;
 
-/* Procedure 17 */
+/* Procedure 18 */
 delimiter /
 create procedure listar_produtos_por_fornecedor(in p_id_fornecedor int)
 begin
@@ -401,59 +455,6 @@ begin
     where id_fornecedor = p_id_fornecedor;
 end/
 delimiter ;
-
-/* Procedure 18 */
-delimiter /
-create procedure consultar_produto(
-    in p_id_produto int
-)
-begin
-    declare v_exist int;
-
-    -- Verifica se o produto existe
-    select count(*) into v_exist
-    from Produto
-    where id_produto = p_id_produto;
-
-    if v_exist = 0 then
-        select 'Produto não encontrado.' as mensagem;
-    else
-        -- Retorna as informações do produto
-        select * from Produto
-        where id_produto = p_id_produto;
-    end if;
-end/
-delimiter ;
-
-/* Procedure 19 */
-delimiter /
-create procedure atualizar_cliente(
-    in p_id_cliente int,
-    in p_nome_cliente varchar(80),
-    in p_CPF varchar(14),
-    in p_endereco varchar(60),
-    in p_idade int
-)
-begin
-    -- Verifica se o cliente existe
-    if not exists (select 1 from Cliente where id_cliente = p_id_cliente) then
-        select 'Cliente não encontrado.' as mensagem;
-    else
-        -- Atualiza os campos fornecidos
-        update Cliente
-        set nome_cliente = if(p_nome_cliente is not null, p_nome_cliente, nome_cliente),
-            CPF = if(p_CPF is not null, p_CPF, CPF),
-            endereco = if(p_endereco is not null, p_endereco, endereco),
-            idade = if(p_idade is not null, p_idade, idade)
-        where id_cliente = p_id_cliente;
-        select 'Cliente atualizado com sucesso.' as mensagem;
-    end if;
-end/
-delimiter ;
-
-
-
-
 
 
 
