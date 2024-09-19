@@ -114,16 +114,16 @@ insert into Fornecedor (id_fornecedor, nome_fornecedor, endereco, telefone, emai
 
 -- Produto
 insert into Produto (id_produto, nome_produto, descricao, preco, qtd_estoque, data_validade, categoria, id_fornecedor) values
-(1, 'Paracetamol 500mg', 'Medicamento para dor e febre', 15.00, 100, 2025, 'Analgésico', 1),
-(2, 'Ibuprofeno 200mg', 'Anti-inflamatório', 20.00, 80, 2024, 'Anti-inflamatório', 2),
-(3, 'Amoxicilina 500mg', 'Antibiótico', 30.00, 50, 2026, 'Antibiótico', 3),
-(4, 'Dipirona 1g', 'Medicamento para dor e febre', 18.00, 70, 2025, 'Analgésico', 4),
-(5, 'Losartana 50mg', 'Anti-hipertensivo', 25.00, 60, 2026, 'Anti-hipertensivo', 5),
-(6, 'Omeprazol 20mg', 'Medicamento para azia', 22.00, 90, 2024, 'Antiácido', 6),
-(7, 'Cetirizina 10mg', 'Antialérgico', 17.00, 75, 2025, 'Antialérgico', 7),
-(8, 'Azitromicina 500mg', 'Antibiótico', 35.00, 40, 2026, 'Antibiótico', 8),
-(9, 'Metformina 850mg', 'Antidiabético', 28.00, 85, 2026, 'Antidiabético', 9),
-(10, 'Loratadina 10mg', 'Antialérgico', 19.00, 65, 2025, 'Antialérgico', 10);
+(1, 'Paracetamol 500mg', 'Medicamento para dor e febre', 15.00, 100, '2025-10-31', 'Analgésico', 1),
+(2, 'Ibuprofeno 200mg', 'Anti-inflamatório', 20.00, 80, '2024-01-03', 'Anti-inflamatório', 2),
+(3, 'Amoxicilina 500mg', 'Antibiótico', 30.00, 50, '2026-05-20', 'Antibiótico', 3),
+(4, 'Dipirona 1g', 'Medicamento para dor e febre', 18.00, 70, '2025-12-01', 'Analgésico', 4),
+(5, 'Losartana 50mg', 'Anti-hipertensivo', 25.00, 60, '2026-05-10', 'Anti-hipertensivo', 5),
+(6, 'Omeprazol 20mg', 'Medicamento para azia', 22.00, 90, '2024-06-10', 'Antiácido', 6),
+(7, 'Cetirizina 10mg', 'Antialérgico', 17.00, 75, '2025-04-30', 'Antialérgico', 7),
+(8, 'Azitromicina 500mg', 'Antibiótico', 35.00, 40, '2026-07-10', 'Antibiótico', 8),
+(9, 'Metformina 850mg', 'Antidiabético', 28.00, 85, '2026-09-13', 'Antidiabético', 9),
+(10, 'Loratadina 10mg', 'Antialérgico', 19.00, 65, '2025-08-11', 'Antialérgico', 10);
 
 -- Venda
 insert into Venda (id_venda, data_venda, valor_total, id_cliente, id_funcionario) values
@@ -154,6 +154,7 @@ insert into Item_Venda (id_item, quantidade, preco_unitario, subtotal, id_venda,
 /* Procedures */
 
 /* Procedure 1 */
+/* Procedure que faz uma consulta da tabela Cliente. */
 delimiter /
 create procedure consulta_cliente(in fun varchar(20), in id int)
 begin
@@ -169,6 +170,7 @@ end/
 delimiter ;
 
 /* Procedure 2 */
+/* Procedure que faz uma consulta da tabela Funcionario. */
 delimiter /
 create procedure consulta_funcionario(in fun varchar(20), in id int)
 begin
@@ -187,6 +189,7 @@ end/
 delimiter ;
 
 /* Procedure 3 */
+/* Procedure que faz uma consulta da tabela Fornecedor. */
 delimiter /
 create procedure consulta_fornecedor(in fun varchar(20), in id int)
 begin
@@ -203,6 +206,7 @@ end/
 delimiter ;
 
 /* Procedure 4 */
+/* Procedure que faz uma consulta da tabela Produto. */
 delimiter /
 create procedure consulta_produto(in fun varchar(20), in id int)
 begin
@@ -221,6 +225,7 @@ end/
 delimiter ;
 
 /* Procedure 5 */
+/* Procedure que faz uma consulta da tabela Venda. */
 delimiter /
 create procedure consulta_venda(in fun varchar(20), in id int)
 begin
