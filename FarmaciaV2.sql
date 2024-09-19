@@ -296,6 +296,7 @@ end/
 delimiter ;
 
 /* Procedure 7 */
+/* Procedure que adiciona um cliente a tabela. */
 delimiter /
 create procedure adicionar_cliente(
     in p_nome_cliente varchar(80),
@@ -310,6 +311,7 @@ end/
 delimiter ;
 
 /* Procedure 8 */
+/* Procedure que atualiza um cliente da tabela */
 delimiter /
 create procedure atualizar_cliente(
     in p_id_cliente int,
@@ -329,6 +331,7 @@ end/
 delimiter ;
 
 /* Procedure 9 */
+/* Procedure que deleta um cliente da tabela. */
 delimiter /
 create procedure deletar_cliente(in p_id_cliente int)
 begin
@@ -337,6 +340,7 @@ end/
 delimiter ;
 
 /* Procedure 10 */
+/* Procedure que adiciona um funcionário a tabela. */
 delimiter /
 create procedure adicionar_funcionario(
     in p_nome_funcionario varchar(80),
@@ -354,6 +358,7 @@ end/
 delimiter ;
 
 /* Procedure 11 */
+/* Procedure que atualiza um funcionário da tabela. */
 delimiter /
 create procedure atualizar_funcionario(
     in p_id_funcionario int,
@@ -379,6 +384,7 @@ end/
 delimiter ;
 
 /* Procedure 12 */
+/* Procedure que deleta um funcionário da tabela. */
 delimiter /
 create procedure deletar_funcionario(in p_id_funcionario int)
 begin
@@ -387,6 +393,7 @@ end/
 delimiter ;
 
 /* Procedure 13 */
+/* Procedure que registra uma venda. */
 delimiter /
 create procedure registrar_venda(
     in p_data_venda datetime,
@@ -401,6 +408,7 @@ end/
 delimiter ;
 
 /* Procedure 14 */
+/* Procedure que registra o item vendido*/
 delimiter /
 create procedure adicionar_item_venda(
     in p_quantidade int,
@@ -416,6 +424,7 @@ end/
 delimiter ;
 
 /* Procedure 15 */
+/* Procedure que verifica se há itens ainda em estoque. */
 delimiter /
 create procedure verificar_estoque(in p_id_produto int)
 begin
@@ -426,6 +435,7 @@ end/
 delimiter ;
 
 /* Procedure 16 */
+/* Procedure que faz a atualização de quantos itens se tem em estoque. */
 delimiter /
 create procedure atualizar_estoque(
     in p_id_produto int,
@@ -439,6 +449,7 @@ end/
 delimiter ;
 
 /* Procedure 17 */
+/* Lista as vendas feitas por cada cliente. */
 delimiter /
 create procedure listar_vendas_por_cliente(in p_id_cliente int)
 begin
@@ -448,6 +459,7 @@ end/
 delimiter ;
 
 /* Procedure 18 */
+/* Procedure que lista os produtos por fornecedor. */
 delimiter /
 create procedure listar_produtos_por_fornecedor(in p_id_fornecedor int)
 begin
@@ -456,9 +468,43 @@ begin
 end/
 delimiter ;
 
+/* Procedure 19 */
+/* Procedure que verifica se um cliente é maior de idede. */
+delimiter /
+create procedure verificar_maioridade(in p_id_cliente int)
+begin
+  declare v_idade int;
 
+  -- Buscar a idade do cliente
+  select idade into v_idade from Cliente where id_cliente = p_id_cliente;
 
+  -- Verificar se a idade foi encontrada
+  if v_idade is null then
+    select 'Cliente não encontrado.' as mensagem;
+  else
+    select
+      case
+        when v_idade >= 18 then 'Maior de idade'
+        else 'Menor de idade'
+      end as status_maioridade;
+  end if;
+end/
+delimiter ;
 
+/* Procedure 20 */
+delimiter /
+create procedure soma_salarios(out soma_salarial decimal(15, 2))
+begin
+  select sum(salario) into soma_salarial from Funcionario;
+end/
+delimiter ;
+
+/*
+declare v_soma_salario decimal(15, 2);
+call soma_salarios(@v_soma_salario);
+
+select @v_soma_salario as soma_total_salarios;
+*/
 
 
 
